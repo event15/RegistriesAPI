@@ -6,7 +6,7 @@
  * Time: 09:36
  */
 
-use Madkom\Registries\Application\RestApi\Provider;
+use Madkom\Registries\Application\Provider;
 
 require_once __DIR__ . '/../config/bootstrap.php';
 

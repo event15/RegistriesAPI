@@ -20,22 +20,46 @@ class Provider implements ControllerProviderInterface
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
-         * host/web/rejestry/
+         * host/api/v0.1/rejestry/
          * host/web/rejestry/{id}
          */
-        $controller->post  ('/',     'API\\Controllers\\RegistryController::addRegistry');
-        $controller->get   ('/',     'API\\Controllers\\RegistryController::findAllRegistries');
-        $controller->get   ('/{id}', 'API\\Controllers\\RegistryController::findRegistryById');
-        $controller->put   ('/{id}', 'API\\Controllers\\RegistryController::modifyRegistryById')->value('id', 1);
-        $controller->delete('/{id}', 'API\\Controllers\\RegistryController::deleteRegistryById');
+        $controller->post(
+            '/',
+            'API\\Controllers\\RegistryController::addRegistry'
+        );
+        $controller->get(
+            '/',
+            'API\\Controllers\\RegistryController::findAllRegistries'
+        );
+        $controller->get(
+            '/{id}',
+            'API\\Controllers\\RegistryController::findRegistryById'
+        );
+        $controller->put(
+            '/{id}',
+            'API\\Controllers\\RegistryController::modifyRegistryById'
+        )->value('id', 1);
+        $controller->delete(
+            '/{id}',
+            'API\\Controllers\\RegistryController::deleteRegistryById'
+        );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
          * host/web/rejestry/{typ}/{id}
          */
-        $controller->post  ('/{id}/elementy', 'API\\Controllers\\ElementController::addElement');
-        $controller->get   ('/{id}/elementy', 'API\\Controllers\\ElementController::findAllElements');
-        $controller->get   ('/{id}/elementy/{idElementu}', 'API\\Controllers\\ElementController::findElementById');
+        $controller->post(
+            '/{id}/elementy',
+            'API\\Controllers\\ElementController::addElement'
+        );
+        $controller->get(
+            '/{id}/elementy',
+            'API\\Controllers\\ElementController::findAllElements'
+        );
+        $controller->get(
+            '/{id}/elementy/{idElementu}',
+            'API\\Controllers\\ElementController::findElementById'
+        );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
