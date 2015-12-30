@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "16cdf1f9e2d85da41cfbb65bf6334bc0",
+    "content-hash": "0bcf79afbcc415e952803fd72ce1f38a",
+    "packages": [
+        {
+            "name": "madkom/registry-domain",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "ssh://git@gitlab.madkom.pl:11371/bip/registries.git",
+                "reference": "895cee9eea65ed64593d6c29443ddefb118c5142"
+            },
+            "require-dev": {
+                "behat/behat": "3.*",
+                "henrikbjorn/phpspec-code-coverage": "2.0.0",
+                "phpspec/phpspec": "2.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Marek Woś",
+                    "email": "m.wos@madkom.pl"
+                }
+            ],
+            "description": "Rejestr firmowy",
+            "time": "2015-12-30 11:03:02"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "madkom/registry-domain": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

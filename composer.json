@@ -1,0 +1,32 @@
+{
+  "name": "madkom/registry-api",
+  "description": "description_text",
+  "authors": [
+    {
+      "name": "Marek Woś",
+      "email": "m.wos@madkom.pl"
+    }
+  ],
+
+  "repositories":
+  [
+    {
+      "type": "vcs",
+      "url" : "ssh://git@gitlab.madkom.pl:11371/bip/registries.git"
+    }
+  ],
+
+  "require": {
+    "madkom/registry-domain": "dev-master"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+
+  "config": {
+    "bin-dir": "bin"
+  }
+}
