@@ -1,16 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: marek
- * Date: 16.07.15
- * Time: 09:36
- */
+use Silex\Application;
 
-use Madkom\Registries\Application\Provider;
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once '../app/config/bootstrap.php';
 
-require_once __DIR__ . '/../config/bootstrap.php';
+
 
 /** @var \Doctrine\ORM\EntityManager $em */
-$em = $app['orm.em'];
-$app->mount('/api/', new Provider());
+$em = $app[ 'orm.em' ];
+
+$app->mount('/rejestry', new API\Provider());
 $app->run();

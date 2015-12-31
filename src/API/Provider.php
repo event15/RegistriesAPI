@@ -1,8 +1,9 @@
 <?php
+namespace API;
 
+use Silex\Api\ControllerProviderInterface;
 use Silex\Application;
 use Silex\ControllerCollection;
-use Silex\ControllerProviderInterface;
 
 class Provider implements ControllerProviderInterface
 {

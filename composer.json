@@ -18,13 +18,14 @@
 
   "require": {
     "madkom/registry-domain": "dev-master",
-    "silex/silex": "v1.3.4",
-    "doctrine/orm": "2.3.5"
+    "silex/silex": "2.0.x-dev",
+    "doctrine/orm": "2.6.x-dev",
+    "dflydev/doctrine-orm-service-provider": "2.0.x-dev"
   },
 
   "autoload": {
     "psr-4": {
-      "": "src/"
+      "": "src/API"
     }
   },
 
