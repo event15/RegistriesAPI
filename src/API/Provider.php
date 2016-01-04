@@ -22,24 +22,28 @@ class Provider implements ControllerProviderInterface
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
          * host/api/v0.1/rejestry/
-         * host/web/rejestry/{id}
+         * host/api/rejestry/{id}
          */
         $controller->post(
             '/',
             'API\\Controllers\\RegistryController::addRegistry'
         );
+        
         $controller->get(
             '/',
             'API\\Controllers\\RegistryController::findAllRegistries'
         );
+
         $controller->get(
             '/{id}',
             'API\\Controllers\\RegistryController::findRegistryById'
         );
+
         $controller->put(
             '/{id}',
             'API\\Controllers\\RegistryController::modifyRegistryById'
         )->value('id', 1);
+
         $controller->delete(
             '/{id}',
             'API\\Controllers\\RegistryController::deleteRegistryById'
@@ -47,7 +51,7 @@ class Provider implements ControllerProviderInterface
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /**
-         * host/web/rejestry/{typ}/{id}
+         * host/api/rejestry/{typ}/{id}
          */
         $controller->post(
             '/{id}/elementy',

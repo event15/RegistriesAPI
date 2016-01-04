@@ -9,5 +9,5 @@ require_once '../app/config/bootstrap.php';
 /** @var \Doctrine\ORM\EntityManager $em */
 $em = $app[ 'orm.em' ];
 
-$app->mount('/rejestry', new API\Provider());
+$app->mount('/v0.1', new API\Provider());
 $app->run();
