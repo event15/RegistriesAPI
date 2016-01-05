@@ -2,13 +2,13 @@
 error_reporting(E_ALL | E_STRICT);
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Dflydev\Silex\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use Silex\Provider\DoctrineServiceProvider;
+use Infrastructure\Doctrine\Repositories\RegistryRepository;
 
 $app          = new Silex\Application();
-$app['debug'] = 1;
+$app['debug'] = true;
 
 $app->register(new DoctrineServiceProvider(),
                [
@@ -23,19 +23,14 @@ $app->register(new DoctrineServiceProvider(),
                ]
 );
 
-$app->register(new DoctrineOrmServiceProvider(),
+$app->register(new \Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider(),
                [
                    'orm.em.options' => [
                        'mappings' => [
                            [
                                'type'      => 'yml',
-                               'namespace' => 'Madkom\Registries\Domain',
-                               'path'      => [__DIR__ . '/../src/Madkom/Registries/Infrastructure/Doctrine/Mappings']
-                           ],
-                           [
-                               'type'      => 'yml',
-                               'namespace' => 'Madkom\Registries\Domain\Car',
-                               'path'      => [__DIR__ . '/../src/Madkom/Registries/Infrastructure/Doctrine/Mappings']
+                               'namespace' => '\Madkom\RegistryApplication\Domain\CarManagement',
+                               'path'      => [__DIR__ . '/../src/Infrastructure/Doctrine/Mappings'],
                            ]
                        ]
                    ]
@@ -45,7 +40,4 @@ $app->register(new DoctrineOrmServiceProvider(),
 $config        = Setup::createYAMLMetadataConfiguration($app['orm.em.options']['mappings'][0]['path'], $app['debug']);
 $app['orm.em'] = EntityManager::create($app['db.options'], $config);
 
-$app['repositories.registry'] = new \Madkom\Registries\Infrastructure\Doctrine\Repositories\RegistryRepositoryImpl($app['orm.em']
-);
-$app['repositories.position'] = new \Madkom\Registries\Infrastructure\Doctrine\Repositories\PositionRepositoryImpl($app['orm.em']
-);
+$app['repositories.car'] = new RegistryRepository($app['orm.em']);

@@ -20,18 +20,14 @@ class Provider implements ControllerProviderInterface
         $controller = $app['controllers_factory'];
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /**
-         * host/api/v0.1/rejestry/
-         * host/api/rejestry/{id}
-         */
         $controller->post(
             '/',
-            'API\\Controllers\\RegistryController::addRegistry'
+            'API\\Controllers\\RegistryController::add'
         );
         
         $controller->get(
             '/',
-            'API\\Controllers\\RegistryController::findAllRegistries'
+            'API\\Controllers\\RegistryController::add'
         );
 
         $controller->get(
@@ -47,23 +43,6 @@ class Provider implements ControllerProviderInterface
         $controller->delete(
             '/{id}',
             'API\\Controllers\\RegistryController::deleteRegistryById'
-        );
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /**
-         * host/api/rejestry/{typ}/{id}
-         */
-        $controller->post(
-            '/{id}/elementy',
-            'API\\Controllers\\ElementController::addElement'
-        );
-        $controller->get(
-            '/{id}/elementy',
-            'API\\Controllers\\ElementController::findAllElements'
-        );
-        $controller->get(
-            '/{id}/elementy/{idElementu}',
-            'API\\Controllers\\ElementController::findElementById'
         );
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
