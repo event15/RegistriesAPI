@@ -1,2 +1,48 @@
 Madkom\RegistryApplication\Domain\CarManagement\Car:
-type: entity
+  type: entity
+
+  id:
+    id:
+      type: integer
+      column: car_id
+      generator:
+        strategy: AUTO
+
+  fields:
+    responsiblePerson:
+      type: string
+      column: responsible_person
+      lenght: 25
+
+    model:
+      type: string
+      column: model
+      lenght: 20
+
+    brand:
+      type: string
+      column: brand
+      lenght: 20
+
+    registrationNumber:
+      type: string
+      column: registration_number
+      lenght: 10
+
+    productionDate:
+      type: datetime
+      column:  production_date
+
+    warrantyPeriod:
+      type: datetime
+      column: warranty_period
+
+    city:
+      type: string
+      column: city
+      lenght: 15
+
+    department:
+      type: string
+      column: department
+      lenght: 15

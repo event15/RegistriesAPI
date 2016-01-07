@@ -7,6 +7,8 @@ use Silex\ControllerCollection;
 
 class Provider implements ControllerProviderInterface
 {
+    const CTRL = 'API\\Controllers\\RegistryController::';
+
     /**
      * Returns routes to connect to the given application.
      *
@@ -19,33 +21,16 @@ class Provider implements ControllerProviderInterface
         /** @var ControllerCollection $controller */
         $controller = $app['controllers_factory'];
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        $controller->post(
-            '/',
-            'API\\Controllers\\RegistryController::add'
-        );
-        
-        $controller->get(
-            '/',
-            'API\\Controllers\\RegistryController::add'
-        );
+        $controller->post('/car', self::CTRL . 'add');
+        $controller->get('/car', self::CTRL . 'getAll');
 
-        $controller->get(
-            '/{id}',
-            'API\\Controllers\\RegistryController::findRegistryById'
-        );
+        $controller->delete('/car/{id}', self::CTRL . 'remove')
+            ->value('id', 1)->assert('id', '\d+');
 
-        $controller->put(
-            '/{id}',
-            'API\\Controllers\\RegistryController::modifyRegistryById'
-        )->value('id', 1);
-
-        $controller->delete(
-            '/{id}',
-            'API\\Controllers\\RegistryController::deleteRegistryById'
-        );
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        $controller->get('/car/{id}', self::CTRL . 'get')
+                   ->value('id', 1)->assert('id', '\d+');
+        $controller->put('/car/{id}', self::CTRL . 'modify')
+                   ->value('id', 1)->assert('id', '\d+');
 
         return $controller;
     }

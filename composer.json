@@ -19,6 +19,7 @@
   "require": {
     "madkom/registry-domain": "dev-master",
     "silex/silex": "2.0.x-dev",
+    "symfony/yaml": "*",
     "doctrine/orm": "2.6.x-dev",
     "dflydev/doctrine-orm-service-provider": "2.0.x-dev"
   },

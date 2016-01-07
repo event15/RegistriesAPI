@@ -23,18 +23,19 @@ $app->register(new DoctrineServiceProvider(),
                ]
 );
 
-$app->register(new \Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider(),
+$app->register(
+    new \Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider(),
+   [
+       'orm.em.options' => [
+           'mappings' => [
                [
-                   'orm.em.options' => [
-                       'mappings' => [
-                           [
-                               'type'      => 'yml',
-                               'namespace' => '\Madkom\RegistryApplication\Domain\CarManagement',
-                               'path'      => [__DIR__ . '/../src/Infrastructure/Doctrine/Mappings'],
-                           ]
-                       ]
-                   ]
+                   'type'      => 'yml',
+                   'namespace' => 'Madkom\RegistryApplication\Domain',
+                   'path'      => [__DIR__ . '/../src/Infrastructure/Doctrine/Mappings'],
                ]
+           ]
+       ]
+   ]
 );
 
 $config        = Setup::createYAMLMetadataConfiguration($app['orm.em.options']['mappings'][0]['path'], $app['debug']);

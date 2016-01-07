@@ -14,8 +14,8 @@ class RegistryRepository implements CarRepositoryInterface
     private $em;
 
     /**
-    * @param \Doctrine\ORM\EntityManager $entityManager
-    */
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager)
     {
         $this->em = $entityManager;
@@ -31,9 +31,9 @@ class RegistryRepository implements CarRepositoryInterface
         try {
             $this->em->persist($car);
             $this->em->flush();
-        } catch(ORMException $saveError) {
+        } catch (ORMException $saveError) {
             sprintf('Nastąpił błąd przy dodawaniu samochodu: %s', $saveError);
-        } catch(ORMInvalidArgumentException $argumentError) {
+        } catch (ORMInvalidArgumentException $argumentError) {
             sprintf('Błąd argumentu przy dodawaniu samochodu: %s', $argumentError);
         }
     }
@@ -43,31 +43,37 @@ class RegistryRepository implements CarRepositoryInterface
      *
      * @return \Madkom\RegistryApplication\Domain\CarManagement\Car
      * @throws \Madkom\RegistryApplication\Domain\CarManagement\CarExceptions\CarNotFoundException
+     * @throws \Exception
      */
     public function find($carId)
     {
-        return $this->em->getRepository();
-    }
+        $car = $this->em->getRepository('Madkom\\RegistryApplication\\Domain\\CarManagement\\Car')
+                        ->find($carId);
 
-    /**
-     * @return boolean
-     */
-    public function isEmpty()
-    {
-        // TODO: Implement isEmpty() method.
+        if($car) {
+            return $car;
+        } else {
+            throw new \Exception('Wybrany element nie istnieje.');
+        }
     }
 
     /**
      * @return boolean
      * @throws \Madkom\RegistryApplication\Domain\CarManagement\CarExceptions\CarNotFoundException
+     * @throws \Exception
      */
     public function remove($carId)
     {
-        // TODO: Implement remove() method.
-    }
+        $car = self::find($carId);
 
-    public function getAllPositions()
-    {
-        // TODO: Implement getAllPositions() method.
+        try {
+            $this->em->remove($car);
+            $this->em->flush();
+
+        } catch (ORMException $saveError) {
+            sprintf('Nastąpił błąd przy usuwaniu samochodu: %s', $saveError);
+        } catch (ORMInvalidArgumentException $argumentError) {
+            sprintf('Błąd argumentu przy usuwaniu samochodu: %s', $argumentError);
+        }
     }
 }
